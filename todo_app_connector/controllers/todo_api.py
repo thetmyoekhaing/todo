@@ -34,7 +34,7 @@ class TodoApiController(http.Controller):
             return Response(json.dumps({'error': True, "message": str(e)}, default=str), content_type='application/json', status=500)
                 
     @http.route('/todo/api/tasks/<int:task_id>', auth='public', methods=['PUT'], csrf=False)
-    def get_task(self, task_id):
+    def update_task(self, task_id):
         try:
             task = request.env['todo.task'].sudo().search([('id', '=', task_id)])
             if not task:
