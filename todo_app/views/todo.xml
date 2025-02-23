@@ -1,0 +1,55 @@
+<odoo>
+    <data>
+        <!-- Actions -->
+        <record id="action_todo_task" model="ir.actions.act_window">
+            <field name="name">To-Do Tasks</field>
+            <field name="res_model">todo.task</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Create your first to-do task</p>
+            </field>
+        </record>
+
+        <!-- Menus -->
+        <menuitem id="menu_todo_main" name="To-Do App"/>
+        <menuitem id="menu_todo_tasks" name="My Tasks" parent="menu_todo_main" action="action_todo_task"/>
+
+        <!-- Tree View -->
+        <record id="view_tree_todo_task" model="ir.ui.view">
+            <field name="name">todo.task.tree</field>
+            <field name="model">todo.task</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="deadline"/>
+                    <field name="state"/>
+                    <field name="priority"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form View -->
+        <record id="view_form_todo_task" model="ir.ui.view">
+            <field name="name">todo.task.form</field>
+            <field name="model">todo.task</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group name="name">
+                        <field name="name"/>
+                        <field name="description"/>
+                    </group>
+
+
+                    <group name="name" string="string">
+                        <field name="deadline"/>
+                        <field name="state"/>
+                        <field name="priority"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>
